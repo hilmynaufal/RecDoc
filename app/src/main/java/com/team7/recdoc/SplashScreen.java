@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.team7.recdoc.tools.Delay;
 
@@ -14,16 +16,21 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        Delay.delay(2, new Delay.DelayCallback() {
+        final Button btnStart = (Button) findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void afterDelay() {
-                next();
+            public void onClick(View v) {
+                LoginActivity loginActivity = new LoginActivity();
+                loginActivity.setVisible(true);
+                
+
+
+
+
             }
         });
     }
 
-    void next() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
+
 }
+
