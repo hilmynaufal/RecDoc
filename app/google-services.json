@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "307075796780",
+    "firebase_url": "https://recdoc-3d4a0.firebaseio.com",
+    "project_id": "recdoc-3d4a0",
+    "storage_bucket": "recdoc-3d4a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307075796780:android:39657b6688db56127ae689",
+        "android_client_info": {
+          "package_name": "com.team7.recdoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307075796780-4kag2rg5ioqpp3g1urmjl5grrrfmob9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team7.recdoc",
+            "certificate_hash": "36f7d9495b3f7c50238a0ac833b184c940bf0ef9"
+          }
+        },
+        {
+          "client_id": "307075796780-5j8vkvbv54nnuhqqkhdia36lufuaqkpv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWGbNmxyWHLKIaVI2s8DFkMgp2jr1IJv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307075796780-5j8vkvbv54nnuhqqkhdia36lufuaqkpv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
