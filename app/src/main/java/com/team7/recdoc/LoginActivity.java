@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,21 +30,30 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btn_login = findViewById(R.id.btn_login);
 
-        EditText edt_username = findViewById(R.id.edt_username);
-        final String username = edt_username.getText().toString();
+        final EditText edt_username = findViewById(R.id.edt_username);
 
-        EditText edt_password = findViewById(R.id.edt_password);
-        final String password = edt_password.getText().toString();
+        final EditText edt_password = findViewById(R.id.edt_password);
+
+        TextView txt_ToSignUp = findViewById(R.id.txt_ToSignUp);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String username = edt_username.getText().toString();
+                final String password = edt_password.getText().toString();
                 fun_auth(username, password);
+            }
+        });
+
+        txt_ToSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startToSignUpActivity();
             }
         });
     }
 
-    void fun_auth(String username, String password) {
+    void fun_auth(final String username, final String password) {
         mAuth.signInWithEmailAndPassword(username, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -59,6 +70,11 @@ public class LoginActivity extends AppCompatActivity {
 
     void startToMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+    void startToSignUpActivity() {
+        Intent i = new Intent(this, SignUpActivity.class);
         startActivity(i);
     }
 }
