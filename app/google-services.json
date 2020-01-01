@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "307075796780-2g4n3036iqk8q8pl890lee5d6cfh7vuh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team7.recdoc",
+            "certificate_hash": "20724fa5debb7cbf9dd124d1a50b3dea82a3e4e7"
+          }
+        },
+        {
           "client_id": "307075796780-4kag2rg5ioqpp3g1urmjl5grrrfmob9s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
