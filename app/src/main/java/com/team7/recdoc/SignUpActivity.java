@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         final EditText edt_passwordSignUp = findViewById(R.id.edt_passwordSignUp);
 
-        final TextView txtReady = findViewById(R.id.txt_Ready);
+        //final TextView txtReady = findViewById(R.id.txt_Ready);
 
         Button btnSignup = findViewById(R.id.btn_SignUp);
 
@@ -43,14 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
                 final String password = edt_passwordSignUp.getText().toString();
                 fun_signup(username, password);
 
-                txtReady.setText("Acount has been created! Click Here To Login!");
-            }
-        });
-
-        txtReady.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startToLoginActivity();
+                //txtReady.setText("Acount has been created! Click Here To Login!");
             }
         });
     }
@@ -63,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d("cekcek", "creating user success");
                         } else {
-                            Log.w("cekcek", "creating failure", task.getException());
+                            Log.w("cekcek", "failure to create", task.getException());
                             Toast.makeText(SignUpActivity.this, "Auth failed", Toast.LENGTH_SHORT).show();
                         }
                     }
