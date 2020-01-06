@@ -1,21 +1,16 @@
-package com.team7.recdoc.Model;
-
-import androidx.databinding.BaseObservable;
+package com.team7.recdoc.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import kotlin.properties.ObservableProperty;
-
-public class Result extends BaseObservable {
+public class Result {
     @SerializedName("content")
     @Expose
-    private List<Content> content = new ArrayList<>();
+    private ArrayList<Content> content;
     @SerializedName("totalElements")
     @Expose
     private Integer totalElements;
@@ -51,11 +46,11 @@ public class Result extends BaseObservable {
 
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public List<Content> getContent() {
+    public ArrayList<Content> getContent() {
         return content;
     }
 
-    public void setContent(List<Content> content) {
+    public void setContent(ArrayList<Content> content) {
         this.content = content;
     }
 
