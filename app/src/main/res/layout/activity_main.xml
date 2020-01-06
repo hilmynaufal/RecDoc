@@ -14,4 +14,38 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"/>
+
+    <!--Content Main-->
+
+    <FrameLayout
+
+        android:id="@+id/fl_container"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+    <android.support.design.widget.BottomNavigationView
+
+        android:id="@+id/bn_main"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+
+        android:background="@color/colorPrimary"
+
+        app:itemIconTint="@drawable/state"
+
+        app:itemTextColor="@drawable/state"
+
+        app:menu="@"
+
+ />
 </RelativeLayout>
