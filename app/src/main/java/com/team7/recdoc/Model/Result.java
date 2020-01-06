@@ -1,5 +1,7 @@
 package com.team7.recdoc.Model;
 
+import androidx.databinding.BaseObservable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -8,7 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Result {
+import kotlin.properties.ObservableProperty;
+
+public class Result extends BaseObservable {
     @SerializedName("content")
     @Expose
     private List<Content> content = new ArrayList<>();

@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.team7.recdoc.Model.APIService;
+import com.team7.recdoc.Network.APIService;
 import com.team7.recdoc.Model.Content;
 import com.team7.recdoc.Model.Result;
 
