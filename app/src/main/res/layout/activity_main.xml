@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/list_test"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"/>
-
-    <!--Content Main-->
-
     <FrameLayout
 
         android:id="@+id/fl_container"
@@ -25,11 +14,13 @@
 
         android:layout_height="match_parent"
 
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
+    </FrameLayout>
 
-    <android.support.design.widget.BottomNavigationView
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
 
         android:id="@+id/bn_main"
 
@@ -45,7 +36,7 @@
 
         app:itemTextColor="@drawable/state"
 
-        app:menu="@"
+        app:menu="@menu/bottomnavigation_menu"
 
- />
+        />
 </RelativeLayout>
