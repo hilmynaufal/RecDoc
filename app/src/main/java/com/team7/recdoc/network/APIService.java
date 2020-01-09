@@ -1,4 +1,6 @@
-package com.team7.recdoc.Model;
+package com.team7.recdoc.network;
+
+import com.team7.recdoc.model.Result;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

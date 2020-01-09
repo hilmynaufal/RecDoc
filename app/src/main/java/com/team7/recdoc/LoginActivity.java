@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btn_login = findViewById(R.id.btn_login);
 
-        final EditText edt_username = findViewById(R.id.edt_username);
+        final EditText edt_email = findViewById(R.id.edt_email);
 
         final EditText edt_password = findViewById(R.id.edt_password);
 
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String username = edt_username.getText().toString();
+                final String username = edt_email.getText().toString();
                 final String password = edt_password.getText().toString();
                 fun_auth(username, password);
             }

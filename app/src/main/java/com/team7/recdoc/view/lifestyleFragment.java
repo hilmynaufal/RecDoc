@@ -1,4 +1,5 @@
-package com.team7.recdoc;
+package com.team7.recdoc.view;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class moreFragment extends Fragment {
+import com.team7.recdoc.R;
+
+public class lifestyleFragment extends Fragment {
 
 
 
@@ -19,7 +22,7 @@ public class moreFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_more, container, false);
+        View view = inflater.inflate(R.layout.fragment_lifestyle, container, false);
 
         return view;
 

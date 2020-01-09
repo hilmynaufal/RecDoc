@@ -1,4 +1,4 @@
-package com.team7.recdoc;
+package com.team7.recdoc.view;
 
 
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.team7.recdoc.R;
 
 
 /**
