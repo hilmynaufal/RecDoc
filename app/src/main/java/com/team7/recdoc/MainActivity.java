@@ -1,39 +1,64 @@
 package com.team7.recdoc;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
 
-import com.team7.recdoc.adapter.BeritaDataAdapter;
-import com.team7.recdoc.viewmodel.BeritaListViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.team7.recdoc.view.FavoriteFragment;
+import com.team7.recdoc.view.HomeFragment;
+import com.team7.recdoc.view.lifestyleFragment;
+import com.team7.recdoc.view.moreFragment;
 
-import java.util.ArrayList;
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private BeritaListViewModel beritaListViewModel;
-    private BeritaDataAdapter beritaDataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.viewHome);
-        beritaListViewModel = ViewModelProviders.of(this).get(BeritaListViewModel.class);
-        beritaListViewModel.getMutableLiveData()
-                .observe(this, new Observer<ArrayList<BeritaListViewModel>>() {
-                    @Override
-                    public void onChanged(ArrayList<BeritaListViewModel> beritaListViewModels) {
-                        beritaDataAdapter = new BeritaDataAdapter(beritaListViewModels, MainActivity.this);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        recyclerView.setAdapter(beritaDataAdapter);
-                    }
-                });
+        // kita set default nya Home Fragment
+        loadFragment(new HomeFragment());
+        // inisialisasi BottomNavigaionView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bn_main);
+        // beri listener pada saat item/menu bottomnavigation terpilih
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+    }
+
+
+    // method untuk load fragment yang sesuai
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fl_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
+        switch (item.getItemId()) {
+            case R.id.home_menu:
+                fragment = new HomeFragment();
+                break;
+            case R.id.lifestyle_menu:
+                fragment = new lifestyleFragment();
+                break;
+            case R.id.favorite_menu:
+                fragment = new FavoriteFragment();
+                break;
+            case R.id.more_menu:
+                fragment = new moreFragment();
+                break;
+        }
+        return loadFragment(fragment);
     }
 }
