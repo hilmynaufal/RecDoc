@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.team7.recdoc.view.FavoriteFragment;
+import com.team7.recdoc.view.HomeFragment;
+import com.team7.recdoc.view.LifestyleFragment;
+import com.team7.recdoc.view.moreFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -17,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // kita set default nya Home Fragment
         loadFragment(new HomeFragment());
         // inisialisasi BottomNavigaionView
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
     }
+
 
     // method untuk load fragment yang sesuai
     private boolean loadFragment(Fragment fragment) {
@@ -38,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
-    // method listener untuk logika pemilihan
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new HomeFragment();
                 break;
             case R.id.lifestyle_menu:
-                fragment = new lifestyleFragment();
+                fragment = new LifestyleFragment();
                 break;
             case R.id.favorite_menu:
                 fragment = new FavoriteFragment();
@@ -58,6 +61,4 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return loadFragment(fragment);
     }
-
-
 }

@@ -3,6 +3,7 @@ package com.team7.recdoc.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,7 +94,7 @@ public class Content {
     }
 
     public String getTitle() {
-        return title;
+        return URLDecoder.decode(title);
     }
 
     public void setTitle(String title) {

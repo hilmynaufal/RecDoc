@@ -23,21 +23,21 @@ public class BeritaListViewModel extends ViewModel {
     public String id = "";
     public String title = "";
     public String publishDate = "";
-    public String photoLandscape = "";
+    public String photo_small = "";
     public MutableLiveData<ArrayList<BeritaListViewModel>> mutableLiveData = new MutableLiveData<>();
 
     private ArrayList<BeritaListViewModel> arrayList;
     private ArrayList<Content> contents;
 
     public String getImgUrl() {
-        return photoLandscape;
+        return photo_small;
     }
 
     @BindingAdapter({"imgUrl"})
     public static void loadimage(ImageView imageView, String imageUrl) {
         Glide.with(imageView.getContext())
                 .load(imageUrl)
-                .apply(RequestOptions.circleCropTransform())
+                .apply(RequestOptions.overrideOf(300))
                 .into(imageView);
     }
 
@@ -49,7 +49,7 @@ public class BeritaListViewModel extends ViewModel {
         this.id = content.getId();
         this.title = content.getTitle();
         this.publishDate = content.getPublishDate();
-        this.photoLandscape = content.getPhotoLanscape();
+        this.photo_small = content.getPhotoSmall();
     }
 
     public MutableLiveData<ArrayList<BeritaListViewModel>> getMutableLiveData() {
