@@ -27,7 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        final EditText edt_usernameSignUp = findViewById(R.id.edt_usernameSignUp);
+        final EditText edt_emailSignUp = findViewById(R.id.edt_emailSignUp);
 
         final EditText edt_passwordSignUp = findViewById(R.id.edt_passwordSignUp);
 
@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String username = edt_usernameSignUp.getText().toString();
+                final String username = edt_emailSignUp.getText().toString();
                 final String password = edt_passwordSignUp.getText().toString();
                 fun_signup(username, password);
 
@@ -54,6 +54,8 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d("cekcek", "creating user success");
+                            Toast.makeText(SignUpActivity.this, "Account has been created!", Toast.LENGTH_SHORT).show();
+                            startToLoginActivity();
                         } else {
                             Log.w("cekcek", "failure to create", task.getException());
                             Toast.makeText(SignUpActivity.this, "Auth failed", Toast.LENGTH_SHORT).show();
