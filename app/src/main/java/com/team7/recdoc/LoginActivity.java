@@ -1,6 +1,9 @@
 package com.team7.recdoc;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,25 +23,41 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private ProgressDialog progressDialog;
+    private SharedPreferences localuser;
+    private EditText edt_email;
+    private EditText edt_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        progressDialog = new ProgressDialog(this);
+
+        localuser = getSharedPreferences("UserLocal", MODE_PRIVATE);
         mAuth = FirebaseAuth.getInstance();
 
         Button btn_login = findViewById(R.id.btn_login);
 
-        final EditText edt_email = findViewById(R.id.edt_email);
+        edt_email = findViewById(R.id.edt_email);
+        edt_email.setText(localuser.getString("username", ""));
 
-        final EditText edt_password = findViewById(R.id.edt_password);
+        edt_password = findViewById(R.id.edt_password);
+        edt_password.setText(localuser.getString("password", ""));
 
         TextView txt_ToSignUp = findViewById(R.id.txt_ToSignUp);
+
+        final String username = edt_email.getText().toString();
+        final String password = edt_password.getText().toString();
+
+        progressDialog.show();
+        checkingLoggedInUser(username, password);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 final String username = edt_email.getText().toString();
                 final String password = edt_password.getText().toString();
                 if (username.equals("") || password.equals("")) {
@@ -62,11 +81,28 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d("cekcek", "sukses");
+
+                            //insert data to local
+                            SharedPreferences.Editor editor = localuser.edit();
+                            editor.putString("username", username);
+                            editor.putString("password", password);
+                            editor.apply();
+                            //ended
+
                             startToMainActivity();
                         } else {
                             Log.w("cekcek", task.getException());
                             Toast.makeText(getBaseContext(), "Username or Password is wrong!", Toast.LENGTH_LONG).show();
+
+                            //deleting inserted password from local
+                            SharedPreferences.Editor editor = localuser.edit();
+                            editor.remove("password");
+                            editor.apply();
+                            //ended
+
+                            edt_password.setText(localuser.getString("password", ""));
                         }
+                        progressDialog.dismiss();
                     }
                 });
     }
@@ -79,5 +115,12 @@ public class LoginActivity extends AppCompatActivity {
     void startToSignUpActivity() {
         Intent i = new Intent(this, SignUpActivity.class);
         startActivity(i);
+    }
+
+    void checkingLoggedInUser(String username, String password) {
+        if (!(username.equals("") && password.equals(""))) {
+            progressDialog.setMessage("Logging In...");
+            fun_auth(username, password);
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.team7.recdoc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    SharedPreferences localuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         mAuth = FirebaseAuth.getInstance();
+        localuser = getSharedPreferences("UserLocal", Context.MODE_PRIVATE);
 
         final EditText edt_emailSignUp = findViewById(R.id.edt_emailSignUp);
 
@@ -40,25 +44,35 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String username = edt_emailSignUp.getText().toString();
                 final String password = edt_passwordSignUp.getText().toString();
-                fun_signup(username, password);
+                if (username.equals("") || password.equals("")) {
+                    Toast.makeText(getBaseContext(), "Email & Username can't be empty!", Toast.LENGTH_LONG);
+                } else fun_signup(username, password);
 
                 //txtReady.setText("Acount has been created! Click Here To Login!");
             }
         });
     }
 
-    void fun_signup(String uName, String pWd) {
+    void fun_signup(final String uName, final String pWd) {
         mAuth.createUserWithEmailAndPassword(uName, pWd)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d("cekcek", "creating user success");
-                            Toast.makeText(SignUpActivity.this, "Account has been created!", Toast.LENGTH_SHORT).show();
+
+                            //insert data to local
+                            SharedPreferences.Editor editor = localuser.edit();
+                            editor.putString("username", uName);
+                            editor.putString("password", pWd);
+                            editor.apply();
+                            //ended
+
+                            Toast.makeText(SignUpActivity.this, "Account has been created!", Toast.LENGTH_LONG).show();
                             startToLoginActivity();
                         } else {
                             Log.w("cekcek", "failure to create", task.getException());
-                            Toast.makeText(SignUpActivity.this, "Auth failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "There's something wrong happened :(", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
