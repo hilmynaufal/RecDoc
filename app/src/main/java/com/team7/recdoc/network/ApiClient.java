@@ -26,7 +26,7 @@ public class ApiClient {
     }
 
     public ApiClient(int i) {
-        final String BASE_API_URL = "https://nutritionix-api.p.rapidapi.com/";
+        final String BASE_API_URL = "https://trackapi.nutritionix.com/";
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
