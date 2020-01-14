@@ -12,10 +12,10 @@ public class Fields {
     private String brandName;
     @SerializedName("nf_calories")
     @Expose
-    private Integer nfCalories;
+    private double nfCalories;
     @SerializedName("nf_total_fat")
     @Expose
-    private Integer nfTotalFat;
+    private double nfTotalFat;
 
     public String getItemName() {
         return itemName;
@@ -33,20 +33,19 @@ public class Fields {
         this.brandName = brandName;
     }
 
-    public Integer getNfCalories() {
+    public double getNfCalories() {
         return nfCalories;
     }
 
-    public void setNfCalories(Integer nfCalories) {
+    public void setNfCalories(double nfCalories) {
         this.nfCalories = nfCalories;
     }
 
-    public Integer getNfTotalFat() {
+    public double getNfTotalFat() {
         return nfTotalFat;
     }
 
-    public void setNfTotalFat(Integer nfTotalFat) {
+    public void setNfTotalFat(double nfTotalFat) {
         this.nfTotalFat = nfTotalFat;
     }
-
 }

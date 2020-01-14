@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,12 +22,15 @@ import com.team7.recdoc.viewmodel.FoodListViewModel;
 
 import java.util.ArrayList;
 
-public class LifestyleFragment extends Fragment {
+public class LifestyleFragment extends Fragment implements  View.OnClickListener{
 
 
     private RecyclerView recyclerView;
     private FoodListViewModel foodListViewModel;
     private FoodDataAdapter foodDataAdapter;
+    private String search;
+
+    TextView textView;
 
     @Nullable
 
@@ -35,9 +40,22 @@ public class LifestyleFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_lifestyle, container, false);
 
+        textView = view.findViewById(R.id.edtSearchFood);
+
+        Button button = view.findViewById(R.id.btnSearchFood);
+        button.setOnClickListener(this);
+
         recyclerView = view.findViewById(R.id.viewFood);
         foodListViewModel = ViewModelProviders.of(this).get(FoodListViewModel.class);
-        foodListViewModel.getMutableLiveData()
+
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        search = textView.getText().toString();
+        foodListViewModel.getMutableLiveData(search)
                 .observe(this, new Observer<ArrayList<FoodListViewModel>>() {
                     @Override
                     public void onChanged(ArrayList<FoodListViewModel> foodListViewModels) {
@@ -46,8 +64,5 @@ public class LifestyleFragment extends Fragment {
                         recyclerView.setAdapter(foodDataAdapter);
                     }
                 });
-        return view;
-
     }
-
 }

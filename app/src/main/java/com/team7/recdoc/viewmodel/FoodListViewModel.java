@@ -1,14 +1,15 @@
 package com.team7.recdoc.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.team7.recdoc.model.Content;
-import com.team7.recdoc.model.Fields;
+import com.team7.recdoc.model.Food;
 import com.team7.recdoc.model.FoodResult;
-import com.team7.recdoc.model.Hit;
 import com.team7.recdoc.network.APIService;
 import com.team7.recdoc.network.ApiClient;
+import com.team7.recdoc.network.Request;
 
 import java.util.ArrayList;
 
@@ -18,42 +19,41 @@ import retrofit2.Response;
 
 public class FoodListViewModel extends ViewModel {
 
-    public String item_name = "";
+    public String food_name = "";
     public String brand_name = "";
-    public int nf_calories = 0;
-    public int nf_total_fat = 0;
+    public String nf_calories = "";
+    public String nf_total_fat = "";
     public MutableLiveData<ArrayList<FoodListViewModel>> mutableLiveData = new MutableLiveData<>();
 
     private ArrayList<FoodListViewModel> arrayList;
-    private ArrayList<Hit> foods;
+    private ArrayList<Food> foods;
 
     public FoodListViewModel() {
 
     }
 
-    public FoodListViewModel(Hit hit) {
-        this.item_name = hit.getFields().getItemName();
-        this.brand_name = hit.getFields().getBrandName();
-        this.nf_calories = hit.getFields().getNfCalories();
-        this.nf_total_fat = hit.getFields().getNfTotalFat();
+    public FoodListViewModel(Food food) {
+        this.food_name = food.getFoodName();
     }
 
-    public MutableLiveData<ArrayList<FoodListViewModel>> getMutableLiveData() {
+    public MutableLiveData<ArrayList<FoodListViewModel>> getMutableLiveData(String s) {
         arrayList = new ArrayList<>();
 
         APIService service = ApiClient.getFoodInstance().getAPIService();
-        Call<FoodResult> result = service.getFoodResult();
+        Call<FoodResult> result = service.getFoodResult(new Request(s));
 
         result.enqueue(new Callback<FoodResult>() {
             @Override
             public void onResponse(Call<FoodResult> call, Response<FoodResult> response) {
                 try {
                     foods = new ArrayList<>();
-                    foods = response.body().getHits();
+                    foods = response.body().getFoods();
+
+                    Log.d("cekcek", "kontol");
 
                     for (int i = 0; i < foods.size(); i++) {
-                        Hit hit = foods.get(i);
-                        FoodListViewModel foodListViewModel = new FoodListViewModel(hit);
+                        Food food = foods.get(i);
+                        FoodListViewModel foodListViewModel = new FoodListViewModel(food);
                         arrayList.add(foodListViewModel);
                         mutableLiveData.setValue(arrayList);
                     }
@@ -64,9 +64,11 @@ public class FoodListViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<FoodResult> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
+        if (mutableLiveData != null) Log.d("cekcek", "tdk error");
         return mutableLiveData;
     }
+
 }
