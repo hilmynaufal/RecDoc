@@ -49,6 +49,7 @@
 
                 <TextView
                     android:id="@+id/tvTitle"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{berita.title}"
@@ -58,6 +59,7 @@
 
                 <TextView
                     android:id="@+id/tvPublishDate"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{berita.publishDate}"

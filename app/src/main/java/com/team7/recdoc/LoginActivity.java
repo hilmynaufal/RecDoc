@@ -41,7 +41,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String username = edt_email.getText().toString();
                 final String password = edt_password.getText().toString();
-                fun_auth(username, password);
+                if (username.equals("") || password.equals("")) {
+                    Toast.makeText(getBaseContext(), "Username & Password can't be empty!", Toast.LENGTH_LONG).show();
+                } else fun_auth(username, password);
             }
         });
 
@@ -63,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                             startToMainActivity();
                         } else {
                             Log.w("cekcek", task.getException());
+                            Toast.makeText(getBaseContext(), "Username or Password is wrong!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

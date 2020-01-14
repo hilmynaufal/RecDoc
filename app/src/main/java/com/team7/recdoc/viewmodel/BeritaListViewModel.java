@@ -48,7 +48,7 @@ public class BeritaListViewModel extends ViewModel {
     public BeritaListViewModel(Content content) {
         this.id = content.getId();
         this.title = content.getTitle();
-        this.publishDate = content.getPublishDate();
+        this.publishDate = "Publish Date: " + content.getPublishDate();
         this.photo_small = content.getPhotoSmall();
     }
 

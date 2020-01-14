@@ -21,6 +21,7 @@ public class FoodListViewModel extends ViewModel {
 
     public String food_name = "";
     public String brand_name = "";
+    public String serving_qty = "";
     public String nf_calories = "";
     public String nf_total_fat = "";
     public MutableLiveData<ArrayList<FoodListViewModel>> mutableLiveData = new MutableLiveData<>();
@@ -34,6 +35,8 @@ public class FoodListViewModel extends ViewModel {
 
     public FoodListViewModel(Food food) {
         this.food_name = food.getFoodName();
+        this.nf_calories = food.getNfCalories().toString();
+        this.serving_qty = food.getServingQty().toString();
     }
 
     public MutableLiveData<ArrayList<FoodListViewModel>> getMutableLiveData(String s) {
@@ -49,7 +52,7 @@ public class FoodListViewModel extends ViewModel {
                     foods = new ArrayList<>();
                     foods = response.body().getFoods();
 
-                    Log.d("cekcek", "kontol");
+                    Log.d("cekcek", "berhasil");
 
                     for (int i = 0; i < foods.size(); i++) {
                         Food food = foods.get(i);
