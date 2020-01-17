@@ -15,64 +15,101 @@
         android:adjustViewBounds="true">
 
         <androidx.cardview.widget.CardView
+            card_view:cardBackgroundColor="@color/colorNavigationIcon"
             android:id="@+id/cvFood"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:elevation="3dp"
-            card_view:cardCornerRadius="1dp">
+            card_view:cardCornerRadius="10dp">
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:stretchColumns="1">
+                android:layout_height="match_parent">
 
                 <TableRow>
 
+
                     <TextView
+                        android:padding="3dip"
+                        android:gravity="center"
                         android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
+                        android:text="Photo"></TextView>
+                    <TextView
+                        android:padding="3dip"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
                         android:text="Food Name"></TextView>
 
                     <TextView
+                        android:padding="3dip"
+                        android:gravity="center"
                         android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_column="2"
+                        android:layout_column="3"
                         android:text="Quantity"></TextView>
 
                     <TextView
+                        android:padding="3dip"
+                        android:gravity="center"
                         android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_column="3"
+                        android:layout_column="4"
                         android:text="Calories"></TextView>
+
                 </TableRow>
 
                 <TableRow>
-
-                    <TextView
-                        android:id="@+id/tvItemName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:padding="3dip"
+                        android:gravity="center"
+                        android:id="@+id/ivBerita"
                         android:layout_column="1"
-                        android:text="@{food.food_name}" />
+                        imgUrl="@{food.thumb}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
-                        android:id="@+id/tvQuantity"
+                        android:padding="3dip"
+                        android:gravity="center"
+                        android:id="@+id/tvItemName"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:text="@{food.serving_qty}" />
+                        android:text="@{food.food_name}" />
 
                     <TextView
-                        android:id="@+id/tvNFCalories"
+                        android:padding="3dip"
+                        android:gravity="center"
+                        android:id="@+id/tvQuantity"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
+                        android:text="@{food.serving_qty}" />
+
+                    <TextView
+                        android:padding="3dip"
+                        android:gravity="center"
+                        android:id="@+id/tvNFCalories"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="4"
                         android:text="@{food.nf_calories}" />
                 </TableRow>
             </TableLayout>

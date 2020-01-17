@@ -16,7 +16,7 @@ public class AltMeasure {
     private Integer seq;
     @SerializedName("qty")
     @Expose
-    private Integer qty;
+    private double qty;
 
     public Double getServingWeight() {
         return servingWeight;
@@ -42,11 +42,11 @@ public class AltMeasure {
         this.seq = seq;
     }
 
-    public Integer getQty() {
+    public double getQty() {
         return qty;
     }
 
-    public void setQty(Integer qty) {
+    public void setQty(double qty) {
         this.qty = qty;
     }
 

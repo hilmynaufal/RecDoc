@@ -28,7 +28,7 @@
 
         android:id="@+id/favorite_menu"
 
-        android:title="@string/favorite"
+        android:title="@string/excercise"
 
         android:icon="@drawable/favorite"/>
 

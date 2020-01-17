@@ -20,7 +20,7 @@
 
         android:layout_centerInParent="true"
 
-        android:text="@string/favorite"
+        android:text="@string/excercise"
 
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

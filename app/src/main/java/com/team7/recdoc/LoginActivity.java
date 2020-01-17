@@ -41,18 +41,18 @@ public class LoginActivity extends AppCompatActivity {
         Button btn_login = findViewById(R.id.btn_login);
 
         edt_email = findViewById(R.id.edt_email);
-        edt_email.setText(localuser.getString("username", ""));
+        edt_email.setText(localuser.getString("email", ""));
 
         edt_password = findViewById(R.id.edt_password);
         edt_password.setText(localuser.getString("password", ""));
 
         TextView txt_ToSignUp = findViewById(R.id.txt_ToSignUp);
 
-        final String username = edt_email.getText().toString();
+        final String email = edt_email.getText().toString();
         final String password = edt_password.getText().toString();
 
-        progressDialog.show();
-        checkingLoggedInUser(username, password);
+        progressDialog.setMessage("Logging In...");
+        checkingLoggedInUser(email, password);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 final String password = edt_password.getText().toString();
                 if (username.equals("") || password.equals("")) {
                     Toast.makeText(getBaseContext(), "Username & Password can't be empty!", Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                 } else fun_auth(username, password);
             }
         });
@@ -74,8 +75,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    void fun_auth(final String username, final String password) {
-        mAuth.signInWithEmailAndPassword(username, password)
+    void fun_auth(final String email, final String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             //insert data to local
                             SharedPreferences.Editor editor = localuser.edit();
-                            editor.putString("username", username);
+                            editor.putString("email", email);
                             editor.putString("password", password);
                             editor.apply();
                             //ended
@@ -102,14 +103,15 @@ public class LoginActivity extends AppCompatActivity {
 
                             edt_password.setText(localuser.getString("password", ""));
                         }
-                        progressDialog.dismiss();
                     }
                 });
+
     }
 
     void startToMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     void startToSignUpActivity() {
@@ -117,10 +119,11 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    void checkingLoggedInUser(String username, String password) {
-        if (!(username.equals("") && password.equals(""))) {
-            progressDialog.setMessage("Logging In...");
-            fun_auth(username, password);
-        }
+    void checkingLoggedInUser(String email, String password) {
+        progressDialog.show();
+        if (!(email.equals("") || password.equals(""))) {
+            fun_auth(email, password);
+        } else progressDialog.dismiss();
     }
+
 }

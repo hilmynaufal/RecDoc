@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.team7.recdoc.view.FavoriteFragment;
 import com.team7.recdoc.view.HomeFragment;
 import com.team7.recdoc.view.LifestyleFragment;
-import com.team7.recdoc.view.moreFragment;
+import com.team7.recdoc.view.MoreFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new FavoriteFragment();
                 break;
             case R.id.more_menu:
-                fragment = new moreFragment();
+                fragment = new MoreFragment();
                 break;
         }
         return loadFragment(fragment);
