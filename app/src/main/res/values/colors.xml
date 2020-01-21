@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#446cb3</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="ColorLightBlue">#0CCBE5</color>
+
     <color name="colorNavigationIcon">#dae9f6</color>
 
     <color name="colorNavigationText">#FFFFFF</color>
