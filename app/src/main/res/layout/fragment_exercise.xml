@@ -10,31 +10,23 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:padding="3dip"
-            android:id="@+id/lyoLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/edtSearchFood"
+                android:id="@+id/edtSearchExercise"
                 android:layout_width="324dp"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/btnSearchFood"
+                android:id="@+id/btnSearchExercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search" />
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Medium"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:text="Food List"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/viewFood"
+            android:id="@+id/viewExercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -48,20 +40,20 @@
         <LinearLayout
             android:orientation="vertical"
             android:visibility="invisible"
-            android:id="@+id/llCalories"
+            android:id="@+id/llExercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-            android:textStyle="bold"
-            android:gravity="center"
-            android:id="@+id/TotalCalories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/TotalCaloriesBurned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Consume"
-                android:id="@+id/btnConsume"
+                android:id="@+id/btnDoExercise"
                 android:gravity="center"/>
         </LinearLayout>
     </LinearLayout>

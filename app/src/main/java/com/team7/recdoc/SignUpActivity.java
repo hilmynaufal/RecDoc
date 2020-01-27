@@ -21,7 +21,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.team7.recdoc.model.Stats;
 import com.team7.recdoc.model.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -79,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
                             //ended
 
                             //add user to firestore
-                            generateUser(uName, pWd);
+                            addToDatabase(uName, eMail, pWd);
                             //end
 
                             Toast.makeText(SignUpActivity.this, "Account has been created!", Toast.LENGTH_LONG).show();
@@ -98,10 +102,18 @@ public class SignUpActivity extends AppCompatActivity {
         finish();
     }
 
-    void generateUser(String username, String password) {
+    void addToDatabase(String username, String email, String password) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference users = database.getReference().child("users");
-        User user = new User(username, password);
-        users.push().setValue(user);
+        DatabaseReference ref = database.getReference();
+        String userId = mAuth.getCurrentUser().getUid();
+        DatabaseReference userRef = ref.child("users/" + userId);
+
+        Map<String, User> users = new HashMap<>();
+        users.put("profile", new User(username, email, password));
+        userRef.setValue(users);
+
+        Map<String, Stats> stats = new HashMap<>();
+        userRef.child("stats").setValue( new Stats(0, 0, 0));
+
     }
 }

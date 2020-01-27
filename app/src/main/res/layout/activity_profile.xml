@@ -22,11 +22,11 @@
                 android:layout_height="150dp"
                 android:src="@drawable/dot"/>
             <TextView
+                android:id="@+id/tv_username"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wiliam Snoe"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
@@ -47,20 +47,21 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Photos"
-                        android:textSize="20sp"
-                        />
+                        android:text="Consumed"
+                        android:textSize="20sp" />
+
                     <TextView
+                        android:id="@+id/tvConsumed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="125"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/ColorLightBlue"/>
+                        android:textColor="@color/ColorLightBlue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -69,20 +70,21 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Followers"
-                        android:textSize="20sp"
-                        />
+                        android:text="Burned"
+                        android:textSize="20sp" />
+
                     <TextView
+                        android:id="@+id/tvBurned"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1205"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/ColorLightBlue"/>
+                        android:textColor="@color/ColorLightBlue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -91,20 +93,21 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Following"
-                        android:textSize="20sp"
-                        />
+                        android:text="Total"
+                        android:textSize="20sp" />
+
                     <TextView
+                        android:id="@+id/tvTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="360"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/ColorLightBlue"/>
+                        android:textColor="@color/ColorLightBlue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -193,8 +196,13 @@
                 android:text="Show all comments"/>
         </LinearLayout>
     </LinearLayout>
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center">
     <Button
+        android:layout_margin="5dp"
         android:id="@+id/btnLogout"
         android:textColor="#fff"
         android:background="@drawable/gradientbackground"
@@ -203,5 +211,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"/>
-
+    <Button
+        android:id="@+id/btnTest"
+        android:textColor="#fff"
+        android:background="@drawable/gradientbackground"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"/>
+</LinearLayout>
 </LinearLayout>

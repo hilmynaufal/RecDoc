@@ -1,4 +1,4 @@
-package com.team7.recdoc.model;
+package com.team7.recdoc.model.food;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

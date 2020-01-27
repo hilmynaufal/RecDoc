@@ -47,7 +47,7 @@ public class ApiClient {
         return apiClient;
     }
 
-    public static synchronized ApiClient getFoodInstance() {
+    public static synchronized ApiClient getNutritionInstance() {
         apiClient = new ApiClient(1);
         return apiClient;
     }

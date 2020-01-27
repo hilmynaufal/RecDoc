@@ -9,11 +9,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.team7.recdoc.model.Food;
-import com.team7.recdoc.model.FoodResult;
+import com.team7.recdoc.model.food.Food;
+import com.team7.recdoc.model.food.FoodResult;
 import com.team7.recdoc.network.APIService;
 import com.team7.recdoc.network.ApiClient;
-import com.team7.recdoc.network.Request;
+import com.team7.recdoc.network.FoodRequest;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ public class FoodListViewModel extends ViewModel {
     public String brand_name = "";
     public String serving_qty = "";
     public String nf_calories = "";
-    public String nf_total_fat = "";
+    public double nf_total_calories = 0.0;
     public String thumb = "";
     public MutableLiveData<ArrayList<FoodListViewModel>> mutableLiveData = new MutableLiveData<>();
 
@@ -55,13 +55,14 @@ public class FoodListViewModel extends ViewModel {
         this.nf_calories = food.getNfCalories().toString() + " kcal";
         this.serving_qty = food.getServingQty().toString();
         this.thumb = food.getPhoto().getThumb();
+        this.nf_total_calories = food.getNfCalories();
     }
 
     public MutableLiveData<ArrayList<FoodListViewModel>> getMutableLiveData(String s) {
         arrayList = new ArrayList<>();
 
-        APIService service = ApiClient.getFoodInstance().getAPIService();
-        Call<FoodResult> result = service.getFoodResult(new Request(s));
+        APIService service = ApiClient.getNutritionInstance().getAPIService();
+        Call<FoodResult> result = service.getFoodResult(new FoodRequest(s));
 
         result.enqueue(new Callback<FoodResult>() {
             @Override
@@ -77,6 +78,7 @@ public class FoodListViewModel extends ViewModel {
                         FoodListViewModel foodListViewModel = new FoodListViewModel(food);
                         arrayList.add(foodListViewModel);
                         mutableLiveData.setValue(arrayList);
+                        Log.d("cekcek", "value of nf_total in local = " + food.getNfCalories());
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -91,5 +93,4 @@ public class FoodListViewModel extends ViewModel {
         if (mutableLiveData != null) Log.d("cekcek", "tdk error");
         return mutableLiveData;
     }
-
 }

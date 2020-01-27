@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.team7.recdoc.view.FavoriteFragment;
+import com.team7.recdoc.view.ExerciseFragment;
 import com.team7.recdoc.view.HomeFragment;
 import com.team7.recdoc.view.LifestyleFragment;
 import com.team7.recdoc.view.MoreFragment;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new LifestyleFragment();
                 break;
             case R.id.favorite_menu:
-                fragment = new FavoriteFragment();
+                fragment = new ExerciseFragment();
                 break;
             case R.id.more_menu:
                 fragment = new MoreFragment();

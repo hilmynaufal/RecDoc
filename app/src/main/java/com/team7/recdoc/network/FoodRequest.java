@@ -1,10 +1,10 @@
 package com.team7.recdoc.network;
 
-public class Request {
+public class FoodRequest {
 
     final String query;
 
-    public Request(String query) {
+    public FoodRequest(String query) {
         this.query = query;
     }
 }

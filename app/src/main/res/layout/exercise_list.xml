@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-    <data class="FoodListBinding">
+    <data class="ExerciseListBinding">
 
         <variable
-            name="food"
-            type="com.team7.recdoc.viewmodel.FoodListViewModel" />
+            name="exercise"
+            type="com.team7.recdoc.viewmodel.ExerciseListViewModel" />
     </data>
 
     <LinearLayout
@@ -36,10 +36,9 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Photo"></TextView>
+                        android:text="Name"></TextView>
                     <TextView
                         android:textColor="@color/ColorLightBlue"
                         android:padding="3dip"
@@ -49,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:text="Food Name"></TextView>
+                        android:text="MET"></TextView>
 
                     <TextView
                         android:textColor="@color/ColorLightBlue"
@@ -60,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
-                        android:text="Quantity"></TextView>
+                        android:text="Duration"></TextView>
 
                     <TextView
                         android:textColor="@color/ColorLightBlue"
@@ -71,17 +70,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="4"
-                        android:text="Calories"></TextView>
+                        android:text="Calories Burned"></TextView>
 
                 </TableRow>
 
                 <TableRow>
-                    <ImageView
+                    <TextView
                         android:padding="3dip"
                         android:gravity="center"
                         android:id="@+id/ivBerita"
                         android:layout_column="1"
-                        imgUrl="@{food.thumb}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:text="@{exercise.exerciseName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -93,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:text="@{food.food_name}" />
+                        android:text="@{exercise.MET}" />
 
                     <TextView
                         android:padding="3dip"
@@ -103,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
-                        android:text="@{food.serving_qty}" />
+                        android:text="@{exercise.duration}" />
 
                     <TextView
                         android:padding="3dip"
@@ -113,7 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="4"
-                        android:text="@{food.nf_calories}" />
+                        android:text="@{exercise.calories}" />
                 </TableRow>
             </TableLayout>
         </androidx.cardview.widget.CardView>

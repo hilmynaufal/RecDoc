@@ -1,7 +1,6 @@
 package com.team7.recdoc;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -58,12 +57,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressDialog.show();
-                final String username = edt_email.getText().toString();
+                final String email = edt_email.getText().toString();
                 final String password = edt_password.getText().toString();
-                if (username.equals("") || password.equals("")) {
+                if (email.equals("") || password.equals("")) {
                     Toast.makeText(getBaseContext(), "Username & Password can't be empty!", Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
-                } else fun_auth(username, password);
+                } else fun_auth(email, password);
             }
         });
 

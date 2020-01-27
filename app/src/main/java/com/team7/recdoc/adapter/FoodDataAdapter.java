@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team7.recdoc.R;
-import com.team7.recdoc.viewmodel.FoodListViewModel;
 import com.team7.recdoc.databinding.FoodListBinding;
+import com.team7.recdoc.viewmodel.FoodListViewModel;
 
 import java.util.ArrayList;
 
