@@ -26,7 +26,7 @@ import com.team7.recdoc.viewmodel.FoodListViewModel;
 
 import java.util.ArrayList;
 
-public class LifestyleFragment extends Fragment implements View.OnClickListener {
+public class FoodFragment extends Fragment implements View.OnClickListener {
 
 
     private RecyclerView recyclerView;
