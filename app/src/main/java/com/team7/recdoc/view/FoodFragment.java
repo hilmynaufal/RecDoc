@@ -46,7 +46,7 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.fragment_lifestyle, container, false);
+        final View view = inflater.inflate(R.layout.fragment_food, container, false);
 
         textView = view.findViewById(R.id.edtSearchFood);
         FoodLayout = view.findViewById(R.id.llCalories);
