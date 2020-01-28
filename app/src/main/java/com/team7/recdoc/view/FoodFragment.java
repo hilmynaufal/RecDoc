@@ -58,7 +58,7 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
         button.setOnClickListener(this);
 
         final FirebaseClient client = FirebaseClient.getInstance();
-        client.setReference();
+        client.setReference("stats");
 
         btnConsume.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -51,7 +51,7 @@ public class ExerciseFragment extends Fragment implements View.OnClickListener {
         ExcerciseLayout = view.findViewById(R.id.llExercise);
 
         final FirebaseClient client = FirebaseClient.getInstance();
-        client.setReference();
+        client.setReference("stats");
 
         btnDoExercise.setOnClickListener(new View.OnClickListener() {
             @Override

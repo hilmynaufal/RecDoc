@@ -41,7 +41,7 @@
         </androidx.recyclerview.widget.RecyclerView>
         <LinearLayout
             android:orientation="vertical"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:id="@+id/llExercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -50,7 +50,7 @@
                 android:gravity="center"
                 android:id="@+id/TotalCaloriesBurned"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btnDoExercise"

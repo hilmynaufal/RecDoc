@@ -38,14 +38,15 @@ public class FirebaseClient {
         return firebaseClient;
     }
 
-    public synchronized void setReference() {
+    public synchronized void setReference(final String child) {
         DatabaseReference ref = database.getReference();
-        userRef = ref.child("users/" + userId).child("stats");
+        userRef = ref.child("users/" + userId).child(child);
 
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                stats = dataSnapshot.getValue(Stats.class);
+                if (child.equals("stats"))  stats = dataSnapshot.getValue(Stats.class);
+                else if (child.equals("profile")) profile = dataSnapshot.getValue(User.class);
             }
 
             @Override
@@ -85,5 +86,38 @@ public class FirebaseClient {
 
     public double getTotal() {
         return stats.getTotal_calories();
+    }
+
+    public String getLastFoodConsumed() {
+        return stats.getLast_food_consumed();
+    }
+
+    public String getLastExercise() {
+        return stats.getLast_exercise();
+    }
+
+    public String getEmail() {
+        return profile.getEmail();
+    }
+
+    public String getUsername() {
+        return profile.getUsername();
+    }
+
+    public void resetStats() {
+        Map<String, Object> reset = new HashMap<>();
+
+        reset.put("calories_burned", 0);
+        reset.put("calories_consumed", 0);
+        reset.put("total_calories", 0);
+        reset.put("last_food_consumed", "");
+        reset.put("last_exercise", "");
+
+        userRef.updateChildren(reset).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
