@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.team7.recdoc.view.ExerciseFragment;
 import com.team7.recdoc.view.HomeFragment;
-import com.team7.recdoc.view.LifestyleFragment;
+import com.team7.recdoc.view.FoodFragment;
 import com.team7.recdoc.view.MoreFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         // kita set default nya Home Fragment
-        loadFragment(new HomeFragment());
+        loadFragment(new FoodFragment());
         // inisialisasi BottomNavigaionView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bn_main);
         // beri listener pada saat item/menu bottomnavigation terpilih
@@ -45,13 +45,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
         switch (item.getItemId()) {
-            case R.id.home_menu:
-                fragment = new HomeFragment();
+            case R.id.food_menu:
+                fragment = new FoodFragment();
                 break;
-            case R.id.lifestyle_menu:
-                fragment = new LifestyleFragment();
-                break;
-            case R.id.favorite_menu:
+            case R.id.exercise_menu:
                 fragment = new ExerciseFragment();
                 break;
             case R.id.more_menu:

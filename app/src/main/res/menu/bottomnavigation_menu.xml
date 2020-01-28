@@ -5,33 +5,26 @@
 
 
 
-<item
-
-    android:id="@+id/home_menu"
-
-    android:title="@string/home"
-
-    android:icon="@drawable/home"
-    />
-
-
-<item
-
-    android:id="@+id/lifestyle_menu"
-
-    android:title="@string/lifeStyle"
-
-    android:icon="@drawable/heart"/>
 
 
 
 <item
 
-    android:id="@+id/favorite_menu"
+    android:id="@+id/food_menu"
+
+    android:title="@string/food"
+
+    android:icon="@drawable/fruit"/>
+
+
+
+<item
+
+    android:id="@+id/exercise_menu"
 
     android:title="@string/excercise"
 
-    android:icon="@drawable/favorite"/>
+    android:icon="@drawable/gym"/>
 
 <item
 

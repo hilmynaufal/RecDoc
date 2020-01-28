@@ -16,13 +16,14 @@
 
             <EditText
                 android:id="@+id/edtSearchExercise"
-                android:layout_width="324dp"
+                android:layout_width="275dp"
                 android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btnSearchExercise"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/btnsearch"
                 android:text="Search" />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
@@ -49,12 +50,13 @@
                 android:id="@+id/TotalCaloriesBurned"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <Button
+                android:id="@+id/btnDoExercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Consume"
-                android:id="@+id/btnDoExercise"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="Do Exercise!" />
         </LinearLayout>
     </LinearLayout>
 </layout>
