@@ -29,6 +29,8 @@ import com.team7.recdoc.model.User;
 import com.team7.recdoc.network.FirebaseClient;
 import com.team7.recdoc.tools.Delay;
 
+import java.text.DecimalFormat;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class MoreFragment extends Fragment {
@@ -60,6 +62,8 @@ public class MoreFragment extends Fragment {
         final FirebaseClient client = FirebaseClient.getInstance();
         client.setReference();
 
+        final DecimalFormat df = new DecimalFormat("#.##");
+
         Button btnTest = view.findViewById(R.id.btnTest);
 
         Delay.delay(3, new Delay.DelayCallback() {
@@ -67,18 +71,18 @@ public class MoreFragment extends Fragment {
             public void afterDelay() {
                 progressDialog.dismiss();
                 progressDialog.cancel();
-                tvConsumed.setText(client.getConsumed());
-                tvBurned.setText(client.getBurned());
-                tvTotal.setText(client.getTotal());
+                tvConsumed.setText(df.format(client.getConsumed()));
+                tvBurned.setText(df.format(client.getBurned()));
+                tvTotal.setText(df.format(client.getTotal()));
             }
         });
 
         btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvConsumed.setText(client.getConsumed());
-                tvBurned.setText(client.getBurned());
-                tvTotal.setText(client.getTotal());
+                tvConsumed.setText(df.format(client.getConsumed()));
+                tvBurned.setText(df.format(client.getBurned()));
+                tvTotal.setText(df.format(client.getTotal()));
             }
         });
 

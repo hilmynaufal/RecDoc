@@ -63,7 +63,7 @@ public class LifestyleFragment extends Fragment implements View.OnClickListener 
         btnConsume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                client.updateCalories(total, 0);
+                client.updateCalories(total, 0, search, "");
                 total = 0.0;
                 totalcalories.setText("Your food has been consumed and were added to your profile!");
                 btnConsume.setVisibility(View.GONE);

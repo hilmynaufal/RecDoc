@@ -55,7 +55,7 @@ public class FirebaseClient {
         });
     }
 
-    public void updateCalories(double consumed, double burned) {
+    public void updateCalories(double consumed, double burned, String last_food_consumed, String last_exercise) {
         Map<String, Object> usersUpdate = new HashMap<>();
 
         double total_calories = stats.getTotal_calories();
@@ -63,6 +63,8 @@ public class FirebaseClient {
         total_calories -= burned;
         if (!(burned == 0)) usersUpdate.put("calories_burned", burned);
         if (!(consumed == 0)) usersUpdate.put("calories_consumed", consumed);
+        if (!(last_food_consumed.equals(""))) usersUpdate.put("last_food_consumed", last_food_consumed);
+        if (!(last_exercise.equals(""))) usersUpdate.put("last_exercise", last_exercise);
         usersUpdate.put("total_calories", total_calories);
         userRef.updateChildren(usersUpdate).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -72,16 +74,16 @@ public class FirebaseClient {
         });
     }
 
-    public String getConsumed() {
+    public double getConsumed() {
         Log.d("cekcek", "Stats value of total_calories: ");
-        return String.valueOf(stats.getCalories_consumed());
+        return stats.getCalories_consumed();
     }
 
-    public String getBurned() {
-        return String.valueOf(stats.getCalories_burned());
+    public double getBurned() {
+        return stats.getCalories_burned();
     }
 
-    public String getTotal() {
-        return String.valueOf(stats.getTotal_calories());
+    public double getTotal() {
+        return stats.getTotal_calories();
     }
 }

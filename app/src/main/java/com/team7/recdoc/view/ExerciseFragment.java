@@ -56,7 +56,7 @@ public class ExerciseFragment extends Fragment implements View.OnClickListener {
         btnDoExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                client.updateCalories(0, total);
+                client.updateCalories(0, total, "", search);
                 total = 0.0;
                 tvTotalCaloriesBurned.setText("Your exercise has been recorded and were added to your profile!");
                 btnDoExercise.setVisibility(View.GONE);

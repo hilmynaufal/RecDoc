@@ -113,7 +113,7 @@ public class SignUpActivity extends AppCompatActivity {
         userRef.setValue(users);
 
         Map<String, Stats> stats = new HashMap<>();
-        userRef.child("stats").setValue( new Stats(0, 0, 0));
+        userRef.child("stats").setValue( new Stats(0,0,0,"",""));
 
     }
 }
