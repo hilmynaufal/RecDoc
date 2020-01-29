@@ -10,17 +10,44 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="405dp">
+
+
+
         <LinearLayout
             android:background="@drawable/gradientbackground"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:orientation="vertical">
-            <ImageView
-                android:layout_marginTop="45dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/ic_person_black_24dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/logout"
+                    android:textColor="#fff" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/btnLogout"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="130dp"
+                    android:src="@drawable/ic_person_black_24dp" />
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/tvUsername"
                 android:layout_marginTop="10dp"
@@ -30,6 +57,7 @@
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
+
         </LinearLayout>
         <androidx.cardview.widget.CardView
             android:layout_width="400dp"
@@ -184,33 +212,15 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/gradientbackground"
-            android:text="Logout"
-            android:textColor="#fff" />
-
-        <Button
+    <Button
             android:id="@+id/btnReset"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
             android:background="@drawable/gradientbackground"
             android:text="Reset"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:visibility="gone" />
     </LinearLayout>
-</LinearLayout>
